@@ -1,0 +1,29 @@
+version: "2.1"
+services:
+  grocy:
+    image: lscr.io/linuxserver/grocy:latest
+    container_name: grocy
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Denver
+    volumes:
+      - grocy_data:/config
+    restart: unless-stopped
+  
+  nginx:
+    image: nginx
+    container_name: nginx
+    restart:
+      unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - grocy
+    volumes:
+      - ./nginx/templates:/etc/nginx/templates
+      - ./nginx/certs:/etc/ssl/certs
+
+volumes:
+  grocy_data:
