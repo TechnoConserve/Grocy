@@ -1,0 +1,1 @@
+@reboot sleep 40 && cd /home/pi/Grocy && /home/pi/.local/bin/docker-compose up --build -d >> /home/pi/grocy-cron.log

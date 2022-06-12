@@ -25,5 +25,16 @@ services:
       - ./nginx/templates:/etc/nginx/templates
       - ./nginx/certs:/etc/ssl/certs
 
+  grocy-buddy:
+    image: f0rc3/barcodebuddy-docker:arm32v7-latest-dev
+    container_name: grocy-buddy
+    restart:
+      unless-stopped
+    depends_on:
+      - grocy
+    volumes:
+      - bbconfig:/config
+
 volumes:
   grocy_data:
+  bbconfig:
