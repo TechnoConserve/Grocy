@@ -26,7 +26,7 @@ services:
       - ./nginx/certs:/etc/ssl/certs
 
   grocy-buddy:
-    image: f0rc3/barcodebuddy-docker:arm32v7-latest-dev
+    image: f0rc3/barcodebuddy-docker:arm32v7-latest
     container_name: grocy-buddy
     restart:
       unless-stopped
